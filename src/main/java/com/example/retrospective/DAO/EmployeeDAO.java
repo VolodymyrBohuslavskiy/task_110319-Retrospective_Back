@@ -8,5 +8,4 @@ import java.util.List;
 public interface EmployeeDAO extends JpaRepository<Employee, Integer> {
     List<Employee> findByEmpNameStartingWith(String empName);
 
-    void deleteByEmpID(int empID);
 }

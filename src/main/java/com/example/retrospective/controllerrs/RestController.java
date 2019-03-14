@@ -1,9 +1,9 @@
 package com.example.retrospective.controllerrs;
 
-import com.example.retrospective.DAO.DepartmentDAO;
-import com.example.retrospective.DAO.EmployeeDAO;
 import com.example.retrospective.models.Department;
 import com.example.retrospective.models.Employee;
+import com.example.retrospective.services.DepartmentService;
+import com.example.retrospective.services.EmployeeService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,14 +15,12 @@ import java.io.IOException;
 @CrossOrigin("*")
 public class RestController {
     @Autowired
-    EmployeeDAO employeeService;
+    EmployeeService employeeService;
     @Autowired
-    DepartmentDAO departmentService;
+    DepartmentService departmentService;
 
     @GetMapping("/get_all_employees")
     public String get_all_employees() throws JsonProcessingException {
-
-        System.out.println(employeeService.findAll());
         return new ObjectMapper().writeValueAsString(employeeService.findAll());
     }
 

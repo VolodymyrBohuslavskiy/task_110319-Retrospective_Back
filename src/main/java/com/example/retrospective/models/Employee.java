@@ -1,16 +1,17 @@
 package com.example.retrospective.models;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.ToString;
+
 import lombok.experimental.FieldDefaults;
 
 import javax.persistence.*;
 
 @Entity
 @Data
+@AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Employee {
     @Id
@@ -21,11 +22,7 @@ public class Employee {
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.DETACH)
     Department department;
 
-    public Employee(String empName, boolean empActive, Department department) {
-        this.empName = empName;
-        this.empActive = empActive;
-        this.department = department;
-    }
+
 
     public Employee() {
     }
